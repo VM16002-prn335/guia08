@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Busqueda:</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel>
+                <h1>BUSQUEDA DE USUARIO</h1>
+                <h:outputText value="Ingrese el nombre del usuario a buscar: "/>
+                <p:inputText id="Busqueda" value="#{usuarioCliente.nombreBuscado}">
+                    <p:ajax  event="keyup" process="Busqueda" update="pnlFiltro" listener="#{usuarioCliente.filtro}"/>
+                </p:inputText>
+                
+                <br/>
+                <p:panel id="pnlFiltro">
+                    <h:outputText value="Usuarios encontrados: "/>
+                    <p:dataList id="listaFiltrada" value="#{usuarioCliente.listaUsaurio}" var="filtrado">
+                    #{filtrado.nombres} #{filtrado.apellidos}
+                </p:dataList>
+                </p:panel>
+                
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
